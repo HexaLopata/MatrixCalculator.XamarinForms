@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinTest.MatrixView">
+    <ContentView.Content>
+        <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
+            <Grid Padding="25" HorizontalOptions="Center" VerticalOptions="Center" x:Name="mainGrid">
+
+            </Grid>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>
