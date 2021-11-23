@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XamarinTest.ViewModels;
+using MatrixOperationsXamarinForms.ViewModels;
 
-namespace XamarinTest.Views
+namespace MatrixOperationsXamarinForms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SubtractionPage : ContentPage

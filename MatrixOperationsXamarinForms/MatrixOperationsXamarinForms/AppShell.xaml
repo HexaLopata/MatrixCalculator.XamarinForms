@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:XamarinTest.Views"
+       xmlns:local="clr-namespace:MatrixOperationsXamarinForms.Views"
        Title="XamarinTest"
-       x:Class="XamarinTest.AppShell"
+       x:Class="MatrixOperationsXamarinForms.AppShell"
        FlyoutBackgroundColor="{StaticResource PrimaryBackground}"
        x:Name="Shell">
 
@@ -41,10 +41,16 @@
         <ShellContent Route="AdditionalPage" ContentTemplate="{DataTemplate local:AdditionPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Вычитание">
-        <ShellContent Route="AdditionalPage" ContentTemplate="{DataTemplate local:SubtractionPage}" />
+        <ShellContent Route="SubtractionPage" ContentTemplate="{DataTemplate local:SubtractionPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Умножение">
-        <ShellContent Route="AdditionalPage" ContentTemplate="{DataTemplate local:MultiplicationPage}" />
+        <ShellContent Route="MultiplicationPage" ContentTemplate="{DataTemplate local:MultiplicationPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Определитель">
+        <ShellContent Route="DeterminantPage" ContentTemplate="{DataTemplate local:DeterminantPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Обратная матрица">
+        <ShellContent Route="InversedMatrixPage" ContentTemplate="{DataTemplate local:InversedMatrixPage}" />
     </FlyoutItem>
 
     <Shell.ItemTemplate>

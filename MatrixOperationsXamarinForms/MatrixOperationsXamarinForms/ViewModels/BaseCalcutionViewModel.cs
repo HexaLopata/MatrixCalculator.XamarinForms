@@ -6,31 +6,31 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace XamarinTest.ViewModels
+namespace MatrixOperationsXamarinForms.ViewModels
 {
     public abstract class BaseCalcutionViewModel : BaseViewModel
     {
-        private Matrix<BindingContainer<int>> _matrix1;
-        private Matrix<BindingContainer<int>> _matrix2;
-        private Matrix<BindingContainer<int>> _resultMatrix;
+        private Matrix<BindingContainer<double>> _matrix1;
+        private Matrix<BindingContainer<double>> _matrix2;
+        private Matrix<BindingContainer<double>> _resultMatrix;
 
         public ICommand CalculateCommand { get; private set; }
         public ICommand SetMatrix1SizeCommand { get; private set; }
         public ICommand SetMatrix2SizeCommand { get; private set; }
 
-        public Matrix<BindingContainer<int>> Matrix1
+        public Matrix<BindingContainer<double>> Matrix1
         {
             get => _matrix1;
             set { SetProperty(ref _matrix1, value); }
         }
 
-        public Matrix<BindingContainer<int>> Matrix2
+        public Matrix<BindingContainer<double>> Matrix2
         {
             get => _matrix2;
             set { SetProperty(ref _matrix2, value); }
         }
 
-        public Matrix<BindingContainer<int>> ResultMatrix
+        public Matrix<BindingContainer<double>> ResultMatrix
         {
             get => _resultMatrix;
             set { SetProperty(ref _resultMatrix, value); }
@@ -43,21 +43,21 @@ namespace XamarinTest.ViewModels
 
         public BaseCalcutionViewModel()
         {
-            Matrix1 = new Matrix<BindingContainer<int>>(3, 3, new BindingContainer<int>[9].Select(e => new BindingContainer<int>()));
-            Matrix2 = new Matrix<BindingContainer<int>>(3, 3, new BindingContainer<int>[9].Select(e => new BindingContainer<int>()));
-            ResultMatrix = new Matrix<BindingContainer<int>>(0, 0);
+            Matrix1 = new Matrix<BindingContainer<double>>(3, 3, new BindingContainer<double>[9].Select(e => new BindingContainer<double>()));
+            Matrix2 = new Matrix<BindingContainer<double>>(3, 3, new BindingContainer<double>[9].Select(e => new BindingContainer<double>()));
+            ResultMatrix = new Matrix<BindingContainer<double>>(0, 0);
 
             CalculateCommand = new Command(() =>
                 {
 
-                    var matrix1 = new IntMatrix(_matrix1.Width, _matrix1.Height, _matrix1.Select(e => e.Value));
-                    var matrix2 = new IntMatrix(_matrix2.Width, _matrix2.Height, _matrix2.Select(e => e.Value));
-                    IntMatrix resultMatrix = Calculate(matrix1, matrix2);
+                    var matrix1 = new RealMatrix(_matrix1.Width, _matrix1.Height, _matrix1.Select(e => e.Value));
+                    var matrix2 = new RealMatrix(_matrix2.Width, _matrix2.Height, _matrix2.Select(e => e.Value));
+                    RealMatrix resultMatrix = Calculate(matrix1, matrix2);
 
-                    ResultMatrix = new Matrix<BindingContainer<int>>(
+                    ResultMatrix = new Matrix<BindingContainer<double>>(
                            resultMatrix.Width,
                            resultMatrix.Height,
-                           resultMatrix.Select(e => new BindingContainer<int>() { Value = e }));
+                           resultMatrix.Select(e => new BindingContainer<double>() { Value = e }));
                     OnPropertyChanged(nameof(ResultMatrix.Width));
                     OnPropertyChanged(nameof(ResultMatrix.Height));
                     OnPropertyChanged(nameof(ResultMatrix));
@@ -84,11 +84,11 @@ namespace XamarinTest.ViewModels
            );
         }
 
-        public abstract IntMatrix Calculate(IntMatrix matrix1, IntMatrix matrix2);
+        public abstract RealMatrix Calculate(RealMatrix matrix1, RealMatrix matrix2);
 
-        private void SetMatrixSize(ref Matrix<BindingContainer<int>> matrix, int width, int height)
+        private void SetMatrixSize(ref Matrix<BindingContainer<double>> matrix, int width, int height)
         {
-            matrix = new Matrix<BindingContainer<int>>(width, height, new BindingContainer<int>[width * height].Select(e => new BindingContainer<int>()));
+            matrix = new Matrix<BindingContainer<double>>(width, height, new BindingContainer<double>[width * height].Select(e => new BindingContainer<double>()));
         }
     }
 }

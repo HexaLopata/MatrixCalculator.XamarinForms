@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace XamarinTest
+namespace MatrixOperationsXamarinForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MatrixView : ContentView
@@ -65,7 +65,7 @@ namespace XamarinTest
             if (HeightInCells != mainGrid.RowDefinitions.Count)
             {
                 mainGrid.RowDefinitions.Clear();
-                var rowDefinition = new RowDefinition() { Height = 40 };
+                var rowDefinition = new RowDefinition() { Height = 55 };
                 for (int i = 0; i < HeightInCells; i++)
                     mainGrid.RowDefinitions.Add(rowDefinition);
             }
@@ -73,7 +73,7 @@ namespace XamarinTest
             if (Width != mainGrid.ColumnDefinitions.Count)
             {
                 mainGrid.ColumnDefinitions.Clear();
-                var columnDefinition = new ColumnDefinition() { Width = 40 };
+                var columnDefinition = new ColumnDefinition() { Width = 55 };
                 for (int i = 0; i < WidthInCells; i++)
                     mainGrid.ColumnDefinitions.Add(columnDefinition);
             }

@@ -1,9 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XamarinTest.Views;
+using MatrixOperationsXamarinForms.Views;
 
-namespace XamarinTest
+namespace MatrixOperationsXamarinForms
 {
     public partial class App : Application
     {

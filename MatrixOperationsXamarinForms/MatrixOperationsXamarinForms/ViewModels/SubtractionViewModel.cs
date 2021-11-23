@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace XamarinTest.ViewModels
+namespace MatrixOperationsXamarinForms.ViewModels
 {
     public class SubtractionViewModel : BaseCalcutionViewModel
     {
-        public override IntMatrix Calculate(IntMatrix matrix1, IntMatrix matrix2)
+        public override RealMatrix Calculate(RealMatrix matrix1, RealMatrix matrix2)
         {
             return matrix1 - matrix2;
         }

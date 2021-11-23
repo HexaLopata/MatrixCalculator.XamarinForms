@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
-using XamarinTest.ViewModels;
-using XamarinTest.Views;
+using MatrixOperationsXamarinForms.ViewModels;
+using MatrixOperationsXamarinForms.Views;
 
-namespace XamarinTest
+namespace MatrixOperationsXamarinForms
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {

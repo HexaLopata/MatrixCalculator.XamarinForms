@@ -5,11 +5,11 @@ using System.Text;
 
 namespace MatrixOperationsXamarinForms.ViewModels
 {
-    public class MultiplicationViewModel : BaseCalcutionViewModel
+    public class InverseMatrixViewModel : BaseCalcutionViewModel
     {
         public override RealMatrix Calculate(RealMatrix matrix1, RealMatrix matrix2)
         {
-            return matrix1 * matrix2;
+            return matrix1.Inversed;
         }
     }
 }

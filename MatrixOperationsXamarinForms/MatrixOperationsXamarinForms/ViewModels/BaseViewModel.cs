@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 
-namespace XamarinTest.ViewModels
+namespace MatrixOperationsXamarinForms.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

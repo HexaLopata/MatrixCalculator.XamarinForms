@@ -11,12 +11,12 @@ using MatrixOperationsXamarinForms.ViewModels;
 namespace MatrixOperationsXamarinForms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MultiplicationPage : ContentPage
+    public partial class InversedMatrixPage : ContentPage
     {
-        public MultiplicationPage()
+        public InversedMatrixPage()
         {
             InitializeComponent();
-            BindingContext = new MultiplicationViewModel();
+            BindingContext = new InverseMatrixViewModel();
         }
     }
 }

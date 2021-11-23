@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinTest.App"
-             xmlns:local="clr-namespace:XamarinTest">
+             x:Class="MatrixOperationsXamarinForms.App"
+             xmlns:local="clr-namespace:MatrixOperationsXamarinForms">
     <!--
         Define global resources and styles here, that apply to all pages in your app.
     -->
@@ -145,6 +145,81 @@
                           HeightInCells="{TemplateBinding BindingContext.ResultMatrix.Height}"/>
 
                         <Button Grid.Row="5"
+                                    Text="Вычислить"
+                                    Command="{TemplateBinding BindingContext.CalculateCommand}"
+                                    BorderColor="{StaticResource RedBorder}"
+                                    BorderWidth="2"
+                                    CornerRadius="20"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    HorizontalOptions="Center"
+                                    WidthRequest="200"/>
+                    </Grid>
+                </ScrollView>
+            </ControlTemplate>
+            <ControlTemplate x:Key="UnaryCalculatePage">
+                <ScrollView>
+                    <Grid BackgroundColor="{StaticResource PrimaryBackground}" Padding="0, 0, 0, 20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <local:MatrixView Grid.Row="0" Margin="10" ItemsSource="{TemplateBinding BindingContext.Matrix1}"
+                          WidthInCells="{TemplateBinding BindingContext.Matrix1.Width}"
+                          HeightInCells="{TemplateBinding BindingContext.Matrix1.Height}"/>
+                        <StackLayout Grid.Row="1" Padding="10" HorizontalOptions="Center" Orientation="Horizontal">
+                            <StackLayout>
+                                <Label Text="Ширина"/>
+                                <Frame BorderColor="{StaticResource RedBorder}"
+                                   CornerRadius="10"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   WidthRequest="2"
+                                   Padding="5, 0">
+                                    <Entry VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="12"
+                                   Keyboard="Numeric"
+                                   MaxLength="1"
+                                   Text="{TemplateBinding BindingContext.WidthOfFirst.Value, Mode=TwoWay}"
+                                   HeightRequest="50"
+                                   WidthRequest="40"
+                                   />
+                                </Frame>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="Start">
+                                <Label Text="Высота"/>
+                                <Frame BorderColor="{StaticResource RedBorder}"
+                                   CornerRadius="10"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   WidthRequest="2"
+                                   Padding="5, 0">
+                                    <Entry VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="12"
+                                   Keyboard="Numeric"
+                                   MaxLength="1"
+                                   Text="{TemplateBinding BindingContext.HeightOfFirst.Value, Mode=TwoWay}"
+                                   HeightRequest="50"
+                                   WidthRequest="40"
+                                   />
+                                </Frame>
+                            </StackLayout>
+
+                            <Button Text="Задать"
+                                    Command="{TemplateBinding BindingContext.SetMatrix1SizeCommand}"
+                                    BorderColor="{StaticResource RedBorder}"
+                                    BorderWidth="2"
+                                    CornerRadius="20"
+                                    BackgroundColor="{StaticResource Primary}"/>
+
+                        </StackLayout>
+
+                        <local:MatrixView Grid.Row="2" Margin="10" ItemsSource="{TemplateBinding BindingContext.ResultMatrix}"
+                          WidthInCells="{TemplateBinding BindingContext.ResultMatrix.Width}"
+                          HeightInCells="{TemplateBinding BindingContext.ResultMatrix.Height}"/>
+
+                        <Button Grid.Row="3"
                                     Text="Вычислить"
                                     Command="{TemplateBinding BindingContext.CalculateCommand}"
                                     BorderColor="{StaticResource RedBorder}"

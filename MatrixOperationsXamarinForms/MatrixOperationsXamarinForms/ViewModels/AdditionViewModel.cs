@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
-namespace XamarinTest.ViewModels
+namespace MatrixOperationsXamarinForms.ViewModels
 {
     public class AdditionViewModel : BaseCalcutionViewModel
     {
-        public override IntMatrix Calculate(IntMatrix matrix1, IntMatrix matrix2)
+        public override RealMatrix Calculate(RealMatrix matrix1, RealMatrix matrix2)
         {
             return matrix1 + matrix2;
         }

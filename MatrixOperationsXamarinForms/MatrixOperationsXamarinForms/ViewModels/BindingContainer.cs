@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace XamarinTest.ViewModels
+namespace MatrixOperationsXamarinForms.ViewModels
 {
     public class BindingContainer<T> : BindableObject
     {

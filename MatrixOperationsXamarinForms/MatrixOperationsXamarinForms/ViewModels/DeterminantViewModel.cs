@@ -5,11 +5,14 @@ using System.Text;
 
 namespace MatrixOperationsXamarinForms.ViewModels
 {
-    public class MultiplicationViewModel : BaseCalcutionViewModel
+    class DeterminantViewModel : BaseCalcutionViewModel
     {
         public override RealMatrix Calculate(RealMatrix matrix1, RealMatrix matrix2)
         {
-            return matrix1 * matrix2;
+            var det = matrix1.Determinant;
+            var result = new RealMatrix(1, 1);
+            result[0, 0] = det;
+            return result;
         }
     }
 }
