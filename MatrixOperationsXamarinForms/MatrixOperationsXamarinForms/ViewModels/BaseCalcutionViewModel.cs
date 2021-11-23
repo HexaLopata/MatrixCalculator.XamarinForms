@@ -40,6 +40,7 @@ namespace MatrixOperationsXamarinForms.ViewModels
         public BindingContainer<int> WidthOfSecond { get; set; } = new BindingContainer<int>(3);
         public BindingContainer<int> HeightOfFirst { get; set; } = new BindingContainer<int>(3);
         public BindingContainer<int> HeightOfSecond { get; set; } = new BindingContainer<int>(3);
+        public BindingContainer<string> ErrorMessage { get; set; } = new BindingContainer<string>("");
 
         public BaseCalcutionViewModel()
         {
@@ -49,18 +50,26 @@ namespace MatrixOperationsXamarinForms.ViewModels
 
             CalculateCommand = new Command(() =>
                 {
+                    try
+                    {
 
-                    var matrix1 = new RealMatrix(_matrix1.Width, _matrix1.Height, _matrix1.Select(e => e.Value));
-                    var matrix2 = new RealMatrix(_matrix2.Width, _matrix2.Height, _matrix2.Select(e => e.Value));
-                    RealMatrix resultMatrix = Calculate(matrix1, matrix2);
+                        var matrix1 = new RealMatrix(_matrix1.Width, _matrix1.Height, _matrix1.Select(e => e.Value));
+                        var matrix2 = new RealMatrix(_matrix2.Width, _matrix2.Height, _matrix2.Select(e => e.Value));
+                        RealMatrix resultMatrix = Calculate(matrix1, matrix2);
 
-                    ResultMatrix = new Matrix<BindingContainer<double>>(
-                           resultMatrix.Width,
-                           resultMatrix.Height,
-                           resultMatrix.Select(e => new BindingContainer<double>() { Value = e }));
-                    OnPropertyChanged(nameof(ResultMatrix.Width));
-                    OnPropertyChanged(nameof(ResultMatrix.Height));
-                    OnPropertyChanged(nameof(ResultMatrix));
+                        ResultMatrix = new Matrix<BindingContainer<double>>(
+                               resultMatrix.Width,
+                               resultMatrix.Height,
+                               resultMatrix.Select(e => new BindingContainer<double>() { Value = e }));
+                        OnPropertyChanged(nameof(ResultMatrix.Width));
+                        OnPropertyChanged(nameof(ResultMatrix.Height));
+                        ErrorMessage.Value = string.Empty;
+                    }
+                    catch (Exception ex)
+                    {
+                        ResultMatrix = new Matrix<BindingContainer<double>>(0, 0);
+                        ErrorMessage.Value = "Ошибка: " + ex.Message;
+                    }
 
                 }
             );
