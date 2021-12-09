@@ -52,7 +52,6 @@ namespace MatrixOperationsXamarinForms.ViewModels
                 {
                     try
                     {
-
                         var matrix1 = new RealMatrix(_matrix1.Width, _matrix1.Height, _matrix1.Select(e => e.Value));
                         var matrix2 = new RealMatrix(_matrix2.Width, _matrix2.Height, _matrix2.Select(e => e.Value));
                         RealMatrix resultMatrix = Calculate(matrix1, matrix2);
@@ -68,7 +67,7 @@ namespace MatrixOperationsXamarinForms.ViewModels
                     catch (Exception ex)
                     {
                         ResultMatrix = new Matrix<BindingContainer<double>>(0, 0);
-                        ErrorMessage.Value = "Ошибка: " + ex.Message;
+                        ErrorMessage.Value = "Error: " + ex.Message;
                     }
 
                 }
@@ -77,18 +76,18 @@ namespace MatrixOperationsXamarinForms.ViewModels
             SetMatrix1SizeCommand = new Command(() =>
                 {
                     SetMatrixSize(ref _matrix1, WidthOfFirst.Value, HeightOfFirst.Value);
-                    OnPropertyChanged(nameof(Matrix1));
                     OnPropertyChanged(nameof(Matrix1.Width));
                     OnPropertyChanged(nameof(Matrix1.Height));
+                    OnPropertyChanged(nameof(Matrix1));
                 }
             );
 
             SetMatrix2SizeCommand = new Command(() =>
                 {
                     SetMatrixSize(ref _matrix2, WidthOfSecond.Value, HeightOfSecond.Value);
-                    OnPropertyChanged(nameof(Matrix2));
                     OnPropertyChanged(nameof(Matrix2.Width));
                     OnPropertyChanged(nameof(Matrix2.Height));
+                    OnPropertyChanged(nameof(Matrix2));
                 }
            );
         }

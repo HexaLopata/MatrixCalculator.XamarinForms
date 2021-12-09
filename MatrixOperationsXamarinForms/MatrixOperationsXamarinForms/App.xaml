@@ -2,6 +2,7 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MatrixOperationsXamarinForms.App"
+             xmlns:ext="clr-namespace:MatrixOperationsXamarinForms.MarkupExtensions"
              xmlns:local="clr-namespace:MatrixOperationsXamarinForms">
     <!--
         Define global resources and styles here, that apply to all pages in your app.
@@ -23,8 +24,8 @@
                                    FontSize="12"
                                    Keyboard="Numeric"
                                    Text="{Binding Value, Mode=TwoWay}"
-                                   HeightRequest="40"
-                                   WidthRequest="40"
+                                   HeightRequest="55"
+                                   WidthRequest="55"
                                    />
                 </Frame>
             </DataTemplate>
@@ -48,12 +49,12 @@
                           WidthInCells="{TemplateBinding BindingContext.Matrix1.Width}"
                           HeightInCells="{TemplateBinding BindingContext.Matrix1.Height}"/>
                             <StackLayout Grid.Row="1" Padding="10" HorizontalOptions="Center" Orientation="Horizontal">
-                                <StackLayout>
-                                    <Label Text="Ширина"/>
+                                <StackLayout Grid.Row="1">
+                                    <Label Text="{ext:Translate WidthLabel}" HorizontalTextAlignment="Center"/>
                                     <Frame BorderColor="{StaticResource RedBorder}"
                                    CornerRadius="10"
                                    BackgroundColor="{StaticResource Primary}"
-                                   WidthRequest="2"
+                                   WidthRequest="40"
                                    Padding="5, 0">
                                         <Entry VerticalTextAlignment="Center"
                                    HorizontalTextAlignment="Center"
@@ -67,11 +68,11 @@
                                     </Frame>
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="Start">
-                                    <Label Text="Высота"/>
+                                    <Label Text="{ext:Translate HeightLabel}" HorizontalTextAlignment="Center"/>
                                     <Frame BorderColor="{StaticResource RedBorder}"
                                    CornerRadius="10"
                                    BackgroundColor="{StaticResource Primary}"
-                                   WidthRequest="2"
+                                   WidthRequest="40"
                                    Padding="5, 0">
                                         <Entry VerticalTextAlignment="Center"
                                    HorizontalTextAlignment="Center"
@@ -85,7 +86,7 @@
                                     </Frame>
                                 </StackLayout>
 
-                                <Button Text="Задать"
+                                <Button Text="{ext:Translate SetSizeButton}"
                                     Command="{TemplateBinding BindingContext.SetMatrix1SizeCommand}"
                                     BorderColor="{StaticResource RedBorder}"
                                     BorderWidth="2"
@@ -99,11 +100,11 @@
                           HeightInCells="{TemplateBinding BindingContext.Matrix2.Height}"/>
                             <StackLayout Grid.Row="3" Padding="10" HorizontalOptions="Center" Orientation="Horizontal">
                                 <StackLayout>
-                                    <Label Text="Ширина"/>
+                                    <Label Text="{ext:Translate WidthLabel}" HorizontalTextAlignment="Center"/>
                                     <Frame BorderColor="{StaticResource RedBorder}"
                                    CornerRadius="10"
                                    BackgroundColor="{StaticResource Primary}"
-                                   WidthRequest="1"
+                                   WidthRequest="40"
                                    Padding="5, 0">
                                         <Entry VerticalTextAlignment="Center"
                                    HorizontalTextAlignment="Center"
@@ -117,11 +118,11 @@
                                     </Frame>
                                 </StackLayout>
                                 <StackLayout>
-                                    <Label Text="Высота"/>
+                                    <Label Text="{ext:Translate HeightLabel}" HorizontalTextAlignment="Center"/>
                                     <Frame BorderColor="{StaticResource RedBorder}"
                                    CornerRadius="10"
                                    BackgroundColor="{StaticResource Primary}"
-                                   WidthRequest="1"
+                                   WidthRequest="40"
                                    Padding="5, 0">
                                         <Entry VerticalTextAlignment="Center"
                                    HorizontalTextAlignment="Center"
@@ -134,7 +135,7 @@
                                    />
                                     </Frame>
                                 </StackLayout>
-                                <Button Text="Задать"
+                                <Button Text="{ext:Translate SetSizeButton}"
                                     Command="{TemplateBinding BindingContext.SetMatrix2SizeCommand}"
                                     BorderColor="{StaticResource RedBorder}"
                                     BorderWidth="2"
@@ -154,7 +155,7 @@
                                Margin="0, 0, 0, 15"/>
 
                             <Button Grid.Row="6"
-                                    Text="Вычислить"
+                                    Text="{ext:Translate CalculateButton}"
                                     Command="{TemplateBinding BindingContext.CalculateCommand}"
                                     BorderColor="{StaticResource RedBorder}"
                                     BorderWidth="2"
@@ -183,11 +184,11 @@
                           HeightInCells="{TemplateBinding BindingContext.Matrix1.Height}"/>
                             <StackLayout Grid.Row="1" Padding="10" HorizontalOptions="Center" Orientation="Horizontal">
                                 <StackLayout>
-                                    <Label Text="Ширина"/>
+                                    <Label Text="{ext:Translate WidthLabel}" HorizontalTextAlignment="Center"/>
                                     <Frame BorderColor="{StaticResource RedBorder}"
                                    CornerRadius="10"
                                    BackgroundColor="{StaticResource Primary}"
-                                   WidthRequest="2"
+                                   WidthRequest="40"
                                    Padding="5, 0">
                                         <Entry VerticalTextAlignment="Center"
                                    HorizontalTextAlignment="Center"
@@ -201,11 +202,11 @@
                                     </Frame>
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="Start">
-                                    <Label Text="Высота"/>
+                                    <Label Text="{ext:Translate HeightLabel}" HorizontalTextAlignment="Center"/>
                                     <Frame BorderColor="{StaticResource RedBorder}"
                                    CornerRadius="10"
                                    BackgroundColor="{StaticResource Primary}"
-                                   WidthRequest="2"
+                                   WidthRequest="40"
                                    Padding="5, 0">
                                         <Entry VerticalTextAlignment="Center"
                                    HorizontalTextAlignment="Center"
@@ -219,7 +220,7 @@
                                     </Frame>
                                 </StackLayout>
 
-                                <Button Text="Задать"
+                                <Button Text="{ext:Translate SetSizeButton}"
                                     Command="{TemplateBinding BindingContext.SetMatrix1SizeCommand}"
                                     BorderColor="{StaticResource RedBorder}"
                                     BorderWidth="2"
@@ -240,7 +241,7 @@
                                Margin="0, 0, 0, 15"/>
 
                             <Button Grid.Row="4"
-                                    Text="Вычислить"
+                                    Text="{ext:Translate CalculateButton}"
                                     Command="{TemplateBinding BindingContext.CalculateCommand}"
                                     BorderColor="{StaticResource RedBorder}"
                                     BorderWidth="2"

@@ -2,7 +2,8 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:MatrixOperationsXamarinForms.Views"
-       Title="XamarinTest"
+       xmlns:ext="clr-namespace:MatrixOperationsXamarinForms.MarkupExtensions"
+       Title="MatrixOperationsXamarinForms"
        x:Class="MatrixOperationsXamarinForms.AppShell"
        FlyoutBackgroundColor="{StaticResource PrimaryBackground}"
        x:Name="Shell">
@@ -37,19 +38,19 @@
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
-    <FlyoutItem Title="Сложение">
+    <FlyoutItem Title="{ext:Translate AdditionLabel}">
         <ShellContent Route="AdditionalPage" ContentTemplate="{DataTemplate local:AdditionPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Вычитание">
+    <FlyoutItem Title="{ext:Translate SubtractionLabel}">
         <ShellContent Route="SubtractionPage" ContentTemplate="{DataTemplate local:SubtractionPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Умножение">
+    <FlyoutItem Title="{ext:Translate MultiplicationLabel}">
         <ShellContent Route="MultiplicationPage" ContentTemplate="{DataTemplate local:MultiplicationPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Определитель">
+    <FlyoutItem Title="{ext:Translate DeterminantLabel}">
         <ShellContent Route="DeterminantPage" ContentTemplate="{DataTemplate local:DeterminantPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Обратная матрица">
+    <FlyoutItem Title="{ext:Translate InversedMatrixLabel}">
         <ShellContent Route="InversedMatrixPage" ContentTemplate="{DataTemplate local:InversedMatrixPage}" />
     </FlyoutItem>
 
@@ -92,7 +93,7 @@
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
             <Grid Padding="0, 10, 0, 10">
-                <Label HorizontalTextAlignment="Center" FontSize="30" Text="Операции"/>
+                <Label HorizontalTextAlignment="Center" FontSize="30" Text="{ext:Translate OperationsLabel}"/>
             </Grid>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>

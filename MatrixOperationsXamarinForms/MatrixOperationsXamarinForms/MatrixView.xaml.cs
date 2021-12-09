@@ -70,7 +70,7 @@ namespace MatrixOperationsXamarinForms
                     mainGrid.RowDefinitions.Add(rowDefinition);
             }
 
-            if (Width != mainGrid.ColumnDefinitions.Count)
+            if (WidthInCells != mainGrid.ColumnDefinitions.Count)
             {
                 mainGrid.ColumnDefinitions.Clear();
                 var columnDefinition = new ColumnDefinition() { Width = 55 };
