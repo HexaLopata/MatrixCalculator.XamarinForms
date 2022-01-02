@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MatrixCalculator.XamarinForms.App"
+             xmlns:ext="clr-namespace:MatrixCalculator.XamarinForms.MarkupExtensions"
+             xmlns:local="clr-namespace:MatrixCalculator.XamarinForms">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#444</Color>
+            <Color x:Key="PrimaryBackground">#222</Color>
+            <Color x:Key="RedBorder">#930d4b</Color>
+            <Color x:Key="Focused">#333</Color>
+            <DataTemplate x:Key="RedBorderEntry">
+                <Frame BorderColor="{StaticResource RedBorder}"
+                                   CornerRadius="10"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   WidthRequest="1"
+                                   Padding="0, 1, 0, 1">
+                    <Entry VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="12"
+                                   Keyboard="Numeric"
+                                   Text="{Binding Value, Mode=TwoWay}"
+                                   HeightRequest="55"
+                                   WidthRequest="55"
+                                   />
+                </Frame>
+            </DataTemplate>
+            <Style TargetType="local:MatrixView">
+                <Setter Property="ItemTemplate" Value="{StaticResource RedBorderEntry}"/>
+            </Style>
+            <ControlTemplate x:Key="CalculatePage">
+                <Grid>
+                    <ScrollView>
+                        <Grid BackgroundColor="{StaticResource PrimaryBackground}" Padding="0, 0, 0, 20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <local:MatrixView Grid.Row="0" Margin="10" ItemsSource="{TemplateBinding BindingContext.Matrix1}"
+                          WidthInCells="{TemplateBinding BindingContext.Matrix1.Width}"
+                          HeightInCells="{TemplateBinding BindingContext.Matrix1.Height}"/>
+                            <StackLayout Grid.Row="1" Padding="10" HorizontalOptions="Center" Orientation="Horizontal">
+                                <StackLayout Grid.Row="1">
+                                    <Label Text="{ext:Translate WidthLabel}" HorizontalTextAlignment="Center"/>
+                                    <Frame BorderColor="{StaticResource RedBorder}"
+                                   CornerRadius="10"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   WidthRequest="40"
+                                   Padding="5, 0">
+                                        <Entry VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="12"
+                                   Keyboard="Numeric"
+                                   MaxLength="1"
+                                   Text="{TemplateBinding BindingContext.WidthOfFirst.Value, Mode=TwoWay}"
+                                   HeightRequest="50"
+                                   WidthRequest="40"
+                                   />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start">
+                                    <Label Text="{ext:Translate HeightLabel}" HorizontalTextAlignment="Center"/>
+                                    <Frame BorderColor="{StaticResource RedBorder}"
+                                   CornerRadius="10"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   WidthRequest="40"
+                                   Padding="5, 0">
+                                        <Entry VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="12"
+                                   Keyboard="Numeric"
+                                   MaxLength="1"
+                                   Text="{TemplateBinding BindingContext.HeightOfFirst.Value, Mode=TwoWay}"
+                                   HeightRequest="50"
+                                   WidthRequest="40"
+                                   />
+                                    </Frame>
+                                </StackLayout>
+
+                                <Button Text="{ext:Translate SetSizeButton}"
+                                    Command="{TemplateBinding BindingContext.SetMatrix1SizeCommand}"
+                                    BorderColor="{StaticResource RedBorder}"
+                                    BorderWidth="2"
+                                    CornerRadius="20"
+                                    BackgroundColor="{StaticResource Primary}"/>
+
+                            </StackLayout>
+
+                            <local:MatrixView Grid.Row="2" Margin="10" ItemsSource="{TemplateBinding BindingContext.Matrix2}"
+                          WidthInCells="{TemplateBinding BindingContext.Matrix2.Width}"
+                          HeightInCells="{TemplateBinding BindingContext.Matrix2.Height}"/>
+                            <StackLayout Grid.Row="3" Padding="10" HorizontalOptions="Center" Orientation="Horizontal">
+                                <StackLayout>
+                                    <Label Text="{ext:Translate WidthLabel}" HorizontalTextAlignment="Center"/>
+                                    <Frame BorderColor="{StaticResource RedBorder}"
+                                   CornerRadius="10"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   WidthRequest="40"
+                                   Padding="5, 0">
+                                        <Entry VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="12"
+                                   Keyboard="Numeric"
+                                   MaxLength="1"
+                                   Text="{TemplateBinding BindingContext.WidthOfSecond.Value, Mode=TwoWay}"
+                                   HeightRequest="50"
+                                   WidthRequest="40"
+                                   />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label Text="{ext:Translate HeightLabel}" HorizontalTextAlignment="Center"/>
+                                    <Frame BorderColor="{StaticResource RedBorder}"
+                                   CornerRadius="10"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   WidthRequest="40"
+                                   Padding="5, 0">
+                                        <Entry VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="12"
+                                   Keyboard="Numeric"
+                                   Text="{TemplateBinding BindingContext.HeightOfSecond.Value, Mode=TwoWay}"
+                                   MaxLength="1"
+                                   HeightRequest="50"
+                                   WidthRequest="40"
+                                   />
+                                    </Frame>
+                                </StackLayout>
+                                <Button Text="{ext:Translate SetSizeButton}"
+                                    Command="{TemplateBinding BindingContext.SetMatrix2SizeCommand}"
+                                    BorderColor="{StaticResource RedBorder}"
+                                    BorderWidth="2"
+                                    CornerRadius="20"
+                                    BackgroundColor="{StaticResource Primary}"/>
+                            </StackLayout>
+
+                            <local:MatrixView Grid.Row="4" Margin="10" ItemsSource="{TemplateBinding BindingContext.ResultMatrix}"
+                          WidthInCells="{TemplateBinding BindingContext.ResultMatrix.Width}"
+                          HeightInCells="{TemplateBinding BindingContext.ResultMatrix.Height}"/>
+
+                            <Label Grid.Row="5"
+                               FontSize="20"
+                               TextColor="#FF4081"
+                               Text="{TemplateBinding BindingContext.ErrorMessage.Value}"
+                               HorizontalTextAlignment="Center"
+                               Margin="0, 0, 0, 15"/>
+
+                            <Button Grid.Row="6"
+                                    Text="{ext:Translate CalculateButton}"
+                                    Command="{TemplateBinding BindingContext.CalculateCommand}"
+                                    BorderColor="{StaticResource RedBorder}"
+                                    BorderWidth="2"
+                                    CornerRadius="20"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    HorizontalOptions="Center"
+                                    WidthRequest="200"/>
+
+                        </Grid>
+                    </ScrollView>
+                </Grid>
+            </ControlTemplate>
+            <ControlTemplate x:Key="UnaryCalculatePage">
+                <Grid>
+                    <ScrollView>
+                        <Grid BackgroundColor="{StaticResource PrimaryBackground}" Padding="0, 0, 0, 20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <local:MatrixView Grid.Row="0" Margin="10" ItemsSource="{TemplateBinding BindingContext.Matrix1}"
+                          WidthInCells="{TemplateBinding BindingContext.Matrix1.Width}"
+                          HeightInCells="{TemplateBinding BindingContext.Matrix1.Height}"/>
+                            <StackLayout Grid.Row="1" Padding="10" HorizontalOptions="Center" Orientation="Horizontal">
+                                <StackLayout>
+                                    <Label Text="{ext:Translate WidthLabel}" HorizontalTextAlignment="Center"/>
+                                    <Frame BorderColor="{StaticResource RedBorder}"
+                                   CornerRadius="10"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   WidthRequest="40"
+                                   Padding="5, 0">
+                                        <Entry VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="12"
+                                   Keyboard="Numeric"
+                                   MaxLength="1"
+                                   Text="{TemplateBinding BindingContext.WidthOfFirst.Value, Mode=TwoWay}"
+                                   HeightRequest="50"
+                                   WidthRequest="40"
+                                   />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="Start">
+                                    <Label Text="{ext:Translate HeightLabel}" HorizontalTextAlignment="Center"/>
+                                    <Frame BorderColor="{StaticResource RedBorder}"
+                                   CornerRadius="10"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   WidthRequest="40"
+                                   Padding="5, 0">
+                                        <Entry VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="12"
+                                   Keyboard="Numeric"
+                                   MaxLength="1"
+                                   Text="{TemplateBinding BindingContext.HeightOfFirst.Value, Mode=TwoWay}"
+                                   HeightRequest="50"
+                                   WidthRequest="40"
+                                   />
+                                    </Frame>
+                                </StackLayout>
+
+                                <Button Text="{ext:Translate SetSizeButton}"
+                                    Command="{TemplateBinding BindingContext.SetMatrix1SizeCommand}"
+                                    BorderColor="{StaticResource RedBorder}"
+                                    BorderWidth="2"
+                                    CornerRadius="20"
+                                    BackgroundColor="{StaticResource Primary}"/>
+
+                            </StackLayout>
+
+                            <local:MatrixView Grid.Row="2" Margin="10" ItemsSource="{TemplateBinding BindingContext.ResultMatrix}"
+                          WidthInCells="{TemplateBinding BindingContext.ResultMatrix.Width}"
+                          HeightInCells="{TemplateBinding BindingContext.ResultMatrix.Height}"/>
+
+                            <Label Grid.Row="3"
+                               FontSize="20"
+                               TextColor="#FF4081"
+                               Text="{TemplateBinding BindingContext.ErrorMessage.Value}"
+                               HorizontalTextAlignment="Center"
+                               Margin="0, 0, 0, 15"/>
+
+                            <Button Grid.Row="4"
+                                    Text="{ext:Translate CalculateButton}"
+                                    Command="{TemplateBinding BindingContext.CalculateCommand}"
+                                    BorderColor="{StaticResource RedBorder}"
+                                    BorderWidth="2"
+                                    CornerRadius="20"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    HorizontalOptions="Center"
+                                    WidthRequest="200"/>
+                        </Grid>
+                    </ScrollView>
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
