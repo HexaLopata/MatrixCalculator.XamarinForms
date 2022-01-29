@@ -53,3 +53,7 @@ MatrixCalculator.XamarinForms
 Скачайте репозиторий с бизнес-логикой и добавьте папку рядом с текущим проектом
 
 Репозиторий с бизнес-логикой: https://github.com/HexaLopata/MatrixCalculator.BL
+
+Актуальная версия
+--------------------
+По этой ссылке можно ознакомиться с актуальной версией проекта: https://play.google.com/store/apps/details?id=com.hexalopata.matrixcalculator
